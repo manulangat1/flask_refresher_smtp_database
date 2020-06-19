@@ -1,7 +1,10 @@
 from flask import Flask,request,render_template,jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
+
+from send_mail import send_mail
 app = Flask(__name__)
+
 
 import os
 basedir = os.path.abspath(os.path.dirname(__file__))
@@ -49,6 +52,7 @@ def index():
         db.session.add(feedback)
         db.session.commit()
         # db.save()
+        send_mail(customer)
         return render_template('success.html')
     return render_template('index.html')
 
