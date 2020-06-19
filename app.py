@@ -10,14 +10,14 @@ import os
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 
-ENV = 'dev'
+ENV = 'prod'
 if ENV == 'dev':
     app.debug = True
     app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
     # app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:3050manu@localhost/flap'
 else:
     app.debug = False
-    app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
+    app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
