@@ -9,6 +9,9 @@
 <body>
     <div class="container">
         <!-- put a message here -->
+        {% if message %}
+        <p  class="mesage">{{ message | safe}}</p>
+        {% endif %}
         <form action="/" method="post">
         <div class="form-group">
             <h3>Customer Name</h3>
